@@ -508,6 +508,13 @@ typealias ElementTuple = (range: NSRange, element: ActiveElement, type: ActiveTy
         }
         elementHandler(element)
     }
+    
+    open override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        if element(at: point) != nil {
+            return super.point(inside: point, with: event)
+        }
+        return false
+    }
 }
 
 extension ActiveLabel: UIGestureRecognizerDelegate {
